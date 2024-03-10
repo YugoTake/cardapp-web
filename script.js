@@ -1,4 +1,12 @@
+// 音声読み上げ機能
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ja-JP'; // 日本語に設定
+    speechSynthesis.speak(utterance);
+}
+
 document.getElementById('loadQuestion').addEventListener('click', function() {
+    // 以前のコードをここに含む
     const start = document.getElementById('start').value;
     const end = document.getElementById('end').value;
     fetch('data.csv')
@@ -14,9 +22,14 @@ document.getElementById('loadQuestion').addEventListener('click', function() {
             document.getElementById('question').textContent = columns[1];
             document.getElementById('answer').textContent = columns[2];
             document.getElementById('showAnswer').style.display = 'inline';
+            
+            // 問題を読み上げる
+            speak(columns[1]);
         });
 });
 
 document.getElementById('showAnswer').addEventListener('click', function() {
+    // 答えを表示し、読み上げる
     document.getElementById('answer').style.display = 'block';
+    speak(document.getElementById('answer').textContent);
 });
