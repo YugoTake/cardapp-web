@@ -62,3 +62,23 @@ input:focus, button:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(0,123,255,0.5);
 }
+
+/* レスポンシブ対応の追加スタイル */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #question {
+        font-size: 18px; /* スマホサイズでは少し小さく */
+    }
+
+    input[type=number], button {
+        font-size: 14px; /* 入力エリアとボタンのフォントサイズを小さく */
+        padding: 6px 12px; /* パディングも調整 */
+    }
+
+    label {
+        font-size: 12px; /* ラベルのフォントサイズを小さく */
+    }
+}
